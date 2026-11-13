@@ -1,5 +1,7 @@
 # Godhome Boss Timer
 
+(the entire project is done by vibe coding with DeepSeek-V4.1-Flash.)
+
 A standalone Hollow Knight mod that times individual Hall of Gods boss
 challenges. It is independent of the DPS Counter mod and can be installed or
 unloaded by itself.
