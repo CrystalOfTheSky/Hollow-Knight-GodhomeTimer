@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+    <RootNamespace>GodhomeBossTimerMod</RootNamespace>
+    <AssemblyName>GodhomeBossTimer</AssemblyName>
+    <Product>Godhome Boss Timer</Product>
+    <Description>Times individual Hall of Gods boss challenges in Hollow Knight.</Description>
+    <AssemblyVersion>0.5.1.0</AssemblyVersion>
+    <FileVersion>0.5.1.0</FileVersion>
+    <Version>0.5.1</Version>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <HollowKnightManaged Condition="'$(HollowKnightManaged)' == '' and Exists('$(HOME)/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app/Contents/Resources/Data/Managed')">$(HOME)/Library/Application Support/Steam/steamapps/common/Hollow Knight/hollow_knight.app/Contents/Resources/Data/Managed</HollowKnightManaged>
+    <HollowKnightManaged Condition="'$(HollowKnightManaged)' == '' and Exists('$(HOME)/Library/Application Support/GOG.com/Galaxy Games/Hollow Knight/hollow_knight.app/Contents/Resources/Data/Managed')">$(HOME)/Library/Application Support/GOG.com/Galaxy Games/Hollow Knight/hollow_knight.app/Contents/Resources/Data/Managed</HollowKnightManaged>
+    <HollowKnightManaged Condition="'$(HollowKnightManaged)' == '' and Exists('$(HOME)/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed')">$(HOME)/.local/share/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed</HollowKnightManaged>
+    <HollowKnightManaged Condition="'$(HollowKnightManaged)' == '' and Exists('C:/Program Files (x86)/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed')">C:/Program Files (x86)/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed</HollowKnightManaged>
+    <HollowKnightManaged Condition="'$(HollowKnightManaged)' == '' and Exists('D:/SteamLibrary/steamapps/common/Hollow Knight/hollow_knight_Data/Managed')">D:/SteamLibrary/steamapps/common/Hollow Knight/hollow_knight_Data/Managed</HollowKnightManaged>
+  </PropertyGroup>
+
+  <Target Name="CheckHollowKnightManaged" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(HollowKnightManaged)')" Text="Hollow Knight Managed folder was not found. Build with: -p:HollowKnightManaged=&quot;/absolute/path/to/Managed&quot;" />
+  </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(HollowKnightManaged)/Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MMHOOK_Assembly-CSharp">
+      <HintPath>$(HollowKnightManaged)/MMHOOK_Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>$(HollowKnightManaged)/UnityEngine.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(HollowKnightManaged)/UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>$(HollowKnightManaged)/UnityEngine.UIModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>$(HollowKnightManaged)/UnityEngine.TextRenderingModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>$(HollowKnightManaged)/UnityEngine.InputLegacyModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>$(HollowKnightManaged)/UnityEngine.UI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="PlayMaker">
+      <HintPath>$(HollowKnightManaged)/PlayMaker.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Mono.Cecil">
+      <HintPath>$(HollowKnightManaged)/Mono.Cecil.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MonoMod.RuntimeDetour">
+      <HintPath>$(HollowKnightManaged)/MonoMod.RuntimeDetour.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="MonoMod.Utils">
+      <HintPath>$(HollowKnightManaged)/MonoMod.Utils.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
